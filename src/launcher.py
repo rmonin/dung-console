@@ -3,9 +3,12 @@ from pygame.locals import *
 
 import conf
 
+from menu import menu
+
 def launch():
 
     pygame.init()
+    clock = pygame.time.Clock()
 
     if conf.fullscreen:
         window = pygame.display.set_mode((800, 600), FULLSCREEN)
@@ -15,15 +18,7 @@ def launch():
     # hide cursor
     pygame.mouse.set_visible(False)
 
-    loop = True
-
-    while loop:
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                loop = False
-
-            if event.type == KEYDOWN and event.key == K_ESCAPE:
-                loop = False
+    menu(window, clock)
 
 if __name__=="__main__":
     launch()
